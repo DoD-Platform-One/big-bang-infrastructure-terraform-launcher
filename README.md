@@ -1,6 +1,6 @@
 # Big Bang Terraform Start
 
-### Using `terraform.tfvars`:
+### Using a vars file:
 
 ```bash
 # Copy and edit with your values
@@ -11,7 +11,7 @@ terraform plan
 terraform apply
 ```
 
-### Using environment variables
+### Using environment variables:
 
 ```bash
 # Update with your values
