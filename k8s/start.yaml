@@ -14,7 +14,7 @@ spec:
   interval: 1m
   url: https://repo1.dso.mil/platform-one/hello-world/big-bang-universe.git
   ref:
-    branch: master
+    branch: play-with-terraform
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1

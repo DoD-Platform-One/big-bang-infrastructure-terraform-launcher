@@ -24,7 +24,7 @@ resource "kubernetes_secret" "private_registry" {
 
 resource "kubernetes_secret" "bb-common-secret" {
   metadata {
-    name      = "common-bb"
+    name      = "terraform"
     namespace = "bigbang"
   }
 
