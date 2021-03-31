@@ -1,8 +1,9 @@
 locals {
-  dockerconfigjson = jsonencode({ for r in var.registry_credentials : r.domain => {
+  dockerconfigjson = jsonencode({ for r in var.registry_credentials : r.registry => {
     auth = base64encode("${r.username}:${r.password}")
     }
   })
+  yaml = yamlencode({ registryCredentials = var.registry_credentials })
 }
 
 resource "kubernetes_secret" "private_registry" {
@@ -20,3 +21,20 @@ resource "kubernetes_secret" "private_registry" {
     kubernetes_namespace.namespace_flux_system
   ]
 }
+
+resource "kubernetes_secret" "bb-common-secret" {
+  metadata {
+    name      = "common-bb"
+    namespace = "bigbang"
+  }
+
+  data = {
+    "values.yaml" = local.yaml
+  }
+
+  depends_on = [
+    kubernetes_namespace.namespace_bigbang
+  ]
+}
+
+

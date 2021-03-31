@@ -16,7 +16,7 @@ variable "big_bang_manifest_file" {
 
 variable "registry_credentials" {
   type = list(object({
-    domain   = string
+    registry   = string
     username = string
     password = string
   }))

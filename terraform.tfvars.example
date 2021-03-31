@@ -1,6 +1,6 @@
 registry_credentials = [
     {
-        domain = "registry1.dso.mil"
+        registry = "registry1.dso.mil"
         username = "REPLACE_ME"
         password = "REPLACE_ME"
     }
