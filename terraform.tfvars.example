@@ -5,3 +5,5 @@ registry_credentials = [
         password = "REPLACE_ME"
     }
 ]
+
+big_bang_manifest_file = ""

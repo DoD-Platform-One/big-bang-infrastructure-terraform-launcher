@@ -36,5 +36,3 @@ resource "kubernetes_secret" "bb-common-secret" {
     kubernetes_namespace.namespace_bigbang
   ]
 }
-
-

@@ -4,11 +4,6 @@ variable "kube_conf_file" {
   default = "~/.kube/config"
 }
 
-variable "flux_manifest_file" {
-    type = string
-    default = "k8s/flux.yaml"
-}
-
 variable "big_bang_manifest_file" {
     type = string
     default = "k8s/start.yaml"

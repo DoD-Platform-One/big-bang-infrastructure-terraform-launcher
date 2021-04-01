@@ -1,5 +1,5 @@
 data "kubectl_file_documents" "flux" {
-  content = file(var.flux_manifest_file)
+  content = file("${path.cwd}/k8s/flux.yaml")
 }
 
 resource "kubectl_manifest" "flux_deployment" {
