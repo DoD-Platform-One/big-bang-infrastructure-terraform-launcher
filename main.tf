@@ -11,8 +11,3 @@ terraform {
     }
   }
 }
-
-# https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#exec-plugins for eks
-provider "kubernetes" {
-  config_path = var.kube_conf_file
-}
