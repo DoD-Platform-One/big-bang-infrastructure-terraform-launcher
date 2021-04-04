@@ -1,3 +1,9 @@
+
+variable "kube_conf_file" {
+  type    = string
+  default = "~/.kube/config"
+}
+
 variable "big_bang_manifest_file" {
     type = string
     default = "k8s/start.yaml"
