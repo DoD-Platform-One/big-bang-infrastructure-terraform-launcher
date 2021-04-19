@@ -16,3 +16,7 @@ terraform {
 provider "kubernetes" {
   config_path = var.kube_conf_file
 }
+
+provider "kubectl" {
+  config_path = var.kube_conf_file
+}
