@@ -19,5 +19,5 @@ variable "registry_credentials" {
 
 variable "reduce_flux_resources" {
   type = bool
-  default = true
+  default = false
 }
