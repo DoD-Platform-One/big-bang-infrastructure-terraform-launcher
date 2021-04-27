@@ -17,6 +17,9 @@ terraform apply
 # Update with your values
 export TF_VAR_registry_credentials='[{registry="registry1.dso.mil",username="REPLACE_ME",password="REPLACE_ME"}]'
 
+#Optional: Reduce flux resource requests for edge/resource constrained environments
+export TF_VAR_reduce_flux_resources=true
+
 terraform init
 terraform plan
 terraform apply

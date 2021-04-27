@@ -16,3 +16,8 @@ variable "registry_credentials" {
     password = string
   }))
 }
+
+variable "reduce_flux_resources" {
+  type = bool
+  default = false
+}
