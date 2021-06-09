@@ -10,3 +10,11 @@ resource "kubectl_manifest" "big_bang" {
     kubernetes_secret.bb-common-secret
   ]
 }
+
+data "external" "Wait_for_load_balancer" {
+  program = ["sh", "${path.module}/get-eip.sh"]
+
+  depends_on = [
+    kubectl_manifest.big_bang
+  ]
+}
