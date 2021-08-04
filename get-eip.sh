@@ -9,8 +9,8 @@ done
 # wait for either ip or hostname to exist 
 while [ -z "$E_IP$E_HOSTNAME" ] ; do 
     sleep 1
-    E_IP=$(kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-    E_HOSTNAME=$(kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+    E_IP=$(kubectl -n istio-system get svc public-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+    E_HOSTNAME=$(kubectl -n istio-system get svc public-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 done
 
 # Dump as json for terraform
