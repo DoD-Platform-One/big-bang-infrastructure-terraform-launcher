@@ -1,5 +1,3 @@
-# sourced from https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/scripts/deploy/flux.yaml
----
 # Installed with flux install --image-pull-secret=private-registry --registry=registry1.dso.mil/ironbank/fluxcd --dry-run --export > flux.yaml
 # Flux version: v0.16.2
 # Components: source-controller,kustomize-controller,helm-controller,notification-controller
