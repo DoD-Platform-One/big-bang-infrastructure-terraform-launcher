@@ -20,7 +20,7 @@ variable "registry_credentials" {
 }
 
 variable "custom_helm_values" {
-  description = "Any other yaml custom values you want to provide to the BigBang Helm Chart. They will be added to the secret named 'terraform' in the 'bigbang' namespace. DON'T put 'registryCredentials' here. That's what the 'registry_credentials' variable is for. NOTE: The 'terraform' secret is the first to be applied, so any keys that appear in this will be overwritten if they also appear in a later values file that is used."
+  description = "Any other yaml custom values you want to provide to the BigBang Helm Chart. They will be added to the secret named 'terraform' in the 'bigbang' namespace. DON'T put 'registryCredentials' here. That's what the 'registry_credentials' variable is for. NOTE: The 'terraform' secret is the first to be applied, so any keys that appear in this will be overwritten if they also appear in a later values file that is used. Also, these custom values will not be tracked by GitOps, so you'll have to do another 'terraform apply' if you change them."
   type = string
   default = ""
 }
