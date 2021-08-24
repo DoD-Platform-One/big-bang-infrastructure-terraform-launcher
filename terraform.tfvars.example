@@ -1,9 +1,0 @@
-registry_credentials = [
-    {
-        registry = "registry1.dso.mil"
-        username = "REPLACE_ME"
-        password = "REPLACE_ME"
-    }
-]
-
-big_bang_manifest_file = ""

@@ -3,7 +3,7 @@ locals {
     auth = base64encode("${r.username}:${r.password}")
     }
   })
-  yaml = yamlencode({ registryCredentials = var.registry_credentials })
+  registryCredentialsYaml = yamlencode({ registryCredentials = var.registry_credentials })
 }
 
 resource "kubernetes_secret" "private_registry" {
@@ -22,6 +22,7 @@ resource "kubernetes_secret" "private_registry" {
   ]
 }
 
+// TODO: Rename this resource to something like 'bb-terraform'. There's a different secret that gets created called 'common-bb' and this isn't it. Renaming the resource is likely a breaking change, but is probably a very minor one.
 resource "kubernetes_secret" "bb-common-secret" {
   metadata {
     name      = "terraform"
@@ -29,7 +30,8 @@ resource "kubernetes_secret" "bb-common-secret" {
   }
 
   data = {
-    "values.yaml" = local.yaml
+    // Definitely apply the registryCredentials, but also maybe apply custom helm values if the variable isn't empty
+    "values.yaml" = var.custom_helm_values == "" ? local.registryCredentialsYaml : "${local.registryCredentialsYaml}\n${var.custom_helm_values}"
   }
 
   depends_on = [

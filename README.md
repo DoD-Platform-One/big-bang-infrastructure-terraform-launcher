@@ -4,7 +4,7 @@
 
 ```bash
 # Copy and edit with your values
-cp terraform.tfvars.example terraform.tfvars 
+cp terraform.example.tfvars terraform.tfvars 
 
 terraform init
 terraform plan
