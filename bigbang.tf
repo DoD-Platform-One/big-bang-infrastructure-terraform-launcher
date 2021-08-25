@@ -11,10 +11,10 @@ resource "kubectl_manifest" "big_bang" {
   ]
 }
 
-data "external" "Wait_for_load_balancer" {
-  program = ["sh", "${path.module}/get-eip.sh"]
+// data "external" "Wait_for_load_balancer" {
+//   program = ["sh", "${path.module}/get-eip.sh"]
 
-  depends_on = [
-    kubectl_manifest.big_bang
-  ]
-}
+//   depends_on = [
+//     kubectl_manifest.big_bang
+//   ]
+// }
