@@ -60,8 +60,6 @@ waitUntilAtLeastOneLoadBalancerPresent
 LOAD_BALANCER_JSON="$(getLoadBalancerInfo)"
 # If the json is empty, it means something went wrong, so we should exit with a nonzero exit code
 [[ -z "${LOAD_BALANCER_JSON}" ]] && die "Something went wrong, no LoadBalancer info was returned"
-
-# We need to output base64 encoded data since Terraform has a bunch of restrictions on the structure of json data that
-# gets returned
-LOAD_BALANCER_JSON_B64="$(echo ${LOAD_BALANCER_JSON} | base64)"
-echo "${LOAD_BALANCER_JSON_B64}"
+# base64 encode the json and add it to a json key so Terraform is happy
+LOAD_BALANCER_JSON_ENCODED="$(jq -e -n --arg "in" "$(echo "${LOAD_BALANCER_JSON}" | base64)" '{"encoded": $in}')"
+echo "${LOAD_BALANCER_JSON_ENCODED}"
