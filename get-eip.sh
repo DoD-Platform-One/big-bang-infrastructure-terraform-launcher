@@ -47,8 +47,7 @@ getLoadBalancerInfo() {
   done
 
   # Dump as json for terraform
-#  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.' | jq -e '{"items": .}')
-  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.')
+  JSON=$(kubectl -n istio-systema get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.' | jq -e '{"items": .}')
   echo "${JSON}"
 }
 
