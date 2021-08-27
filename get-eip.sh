@@ -27,11 +27,8 @@ waitUntilAtLeastOneLoadBalancerPresent() {
 # wait for either ip or hostname to exist for each LoadBalancer present, then echo a json with the info on ip and hostname
 # Format: [{"name": "foo", "ip": "bar", "hostname": "baz"},{...}]
 getLoadBalancerInfo() {
-  tries=0
-  maxTries=120
-  period=1
-  while [[ $tries -lt $maxTries ]] ; do
-      sleep $period
+  while true ; do
+      sleep 1
       # Construct a base64 encoded JSON object containing the name, ip, and hostname of each LoadBalancer service
       # present in the istio-system namespace.
       JSONB64=$(kubectl -n istio-system get svc -o json | jq -e -r '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname} | @base64')
@@ -47,11 +44,10 @@ getLoadBalancerInfo() {
       if [[ "$done" = "1" ]] ; then
         break
       fi
-      tries+=1
   done
 
   # Dump as json for terraform
-  JSON=$(kubectl -n istio-system get svc -o json | jq -e -r '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}')
+  JSON=$(kubectl -n istio-system get svc -o json | jq -e -r '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s)
   echo "${JSON}"
 }
 
