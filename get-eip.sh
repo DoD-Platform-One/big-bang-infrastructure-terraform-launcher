@@ -47,7 +47,7 @@ getLoadBalancerInfo() {
   done
 
   # Dump as json for terraform
-  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.' | jq -e '{"items": .}')
+  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.')
   echo "${JSON}"
 }
 
@@ -60,4 +60,8 @@ waitUntilAtLeastOneLoadBalancerPresent
 LOAD_BALANCER_JSON="$(getLoadBalancerInfo)"
 # If the json is empty, it means something went wrong, so we should exit with a nonzero exit code
 [[ -z "${LOAD_BALANCER_JSON}" ]] && die "Something went wrong, no LoadBalancer info was returned"
-echo "${LOAD_BALANCER_JSON}"
+
+# We need to output base64 encoded data since Terraform has a bunch of restrictions on the structure of json data that
+# gets returned
+LOAD_BALANCER_JSON_B64="$(echo ${LOAD_BALANCER_JSON} | base64)"
+echo "${LOAD_BALANCER_JSON_B64}"
