@@ -6,6 +6,7 @@
 - `terraform`
 - `kubectl`
 - `jq`
+- `base64`
 
 ## Getting Started
 
