@@ -1,3 +1,6 @@
+# IDEs
+.idea/
+
 *.tfvars
 .terraform*
 terraform.tfvars
