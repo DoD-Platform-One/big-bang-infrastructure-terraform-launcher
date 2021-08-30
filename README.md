@@ -77,5 +77,5 @@ terraform apply -var 'registry_credentials=[{regsitry="registry1.dso.mil",userna
 
 | Name | Description |
 |------|-------------|
-| <a name="output_external_load_balancer"></a> [external\_load\_balancer](#output\_external\_load\_balancer) | JSON array with information on all LoadBalancer services in the istio-system namespace. Example output: `[{"name": "public-ingressgateway", "ip": "192.0.2.0", "hostname": "null"}, {...}]` |
+| <a name="output_external_load_balancer"></a> [external\_load\_balancer](#output\_external\_load\_balancer) | JSON array with information on all LoadBalancer services in the istio-system namespace. Example output:<pre>[<br>  {<br>    "name": "public-ingressgateway",<br>    "ip": "192.0.2.0",<br>    "hostname": "null"<br>  },<br>  {...}<br>]</pre> |
 <!-- END_TF_DOCS -->
