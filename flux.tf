@@ -11,7 +11,7 @@ data "kubectl_file_documents" "flux_custom" {
 }
 
 resource "kubectl_manifest" "flux_deployment" {
-  count     = var.reduce_flux_resources == true && var.flux_custom == false ? 0 : length(data.kubectl_file_documents.flux.documents)
+  count     = var.reduce_flux_resources == false && var.flux_custom == false ? length(data.kubectl_file_documents.flux.documents) : 0
   yaml_body = element(data.kubectl_file_documents.flux.documents, count.index)
   depends_on = [
     kubernetes_secret.private_registry
