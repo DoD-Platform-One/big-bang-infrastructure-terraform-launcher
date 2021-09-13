@@ -10,6 +10,18 @@ variable "big_bang_manifest_file" {
   default = "k8s/start.yaml"
 }
 
+variable "flux_file" {
+  description = "Path to the flux file."
+  type    = string
+  default = "k8s/flux.yaml"
+}
+
+variable "flux_custom" {
+  description = "Used to determine if using a custom flux deployment"
+  type    = bool
+  default = false
+}
+
 variable "registry_credentials" {
   description = "System-wide registry credentials to be applied so Kubernetes can pull container images. Creds for registry1.dso.mil are required, and you can optionally provide any other creds for other private registries as well"
   type = list(object({
