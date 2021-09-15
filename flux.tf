@@ -3,7 +3,7 @@ data "kubectl_file_documents" "flux" {
 }
 
 resource "kubectl_manifest" "flux_deployment" {
-  yaml_body = element(data.kubectl_file_documents.flux.documents, count.index)
+  yaml_body = element(data.kubectl_file_documents.flux.documents)
   depends_on = [
     kubernetes_secret.private_registry
   ]
