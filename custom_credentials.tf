@@ -1,12 +1,18 @@
+locals {
+  credentials = var.custom_credentials
+}
+
 resource "kubernetes_secret" "custom_credentials" {
+  count = length(local.credentials)
+
   metadata {
-    name      = var.custom_credentials.name
-    namespace = var.custom_credentials.namespace
+    name      = local.credentials[count.index].name
+    namespace = local.credentials[count.index].namespace
   }
 
   data = {
-    "username" = var.custom_credentials.username
-    "password" = var.custom_credentials.password
+    "username" = local.credentials[count.index].username
+    "password" = local.credentials[count.index].password
   }
 
   depends_on = [
