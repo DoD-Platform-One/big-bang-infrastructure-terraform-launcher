@@ -31,3 +31,13 @@ variable "reduce_flux_resources" {
   type        = bool
   default     = false
 }
+
+variable "custom_credentials" {
+  description = "Any custom credentials needed for custom BigBang implementation"
+  type = list(object({
+    namespace = string
+    name      = string
+    username  = string
+    password  = string
+  }))
+}
