@@ -12,5 +12,5 @@ JSON array with information on all LoadBalancer services in the istio-system nam
 ]
 ```
 EOF
-  value = base64decode(data.external.Wait_for_load_balancer.result.encoded)
+  value       = base64decode(data.external.Wait_for_load_balancer.result.encoded)
 }
