@@ -57,7 +57,9 @@ getLoadBalancerInfo() {
 waitForIstioNamespace
 waitUntilAtLeastOneLoadBalancerPresent
 # Allow time for additional load balancers to come up
+echo date
 sleep 10s
+echo date
 LOAD_BALANCER_JSON="$(getLoadBalancerInfo)"
 # If the json is empty, it means something went wrong, so we should exit with a nonzero exit code
 [[ -z "${LOAD_BALANCER_JSON}" ]] && die "Something went wrong, no LoadBalancer info was returned"
