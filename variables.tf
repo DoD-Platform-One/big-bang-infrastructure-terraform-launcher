@@ -40,4 +40,5 @@ variable "custom_credentials" {
     username  = string
     password  = string
   }))
+  default = []
 }
