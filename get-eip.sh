@@ -30,7 +30,7 @@ getLoadBalancerInfo() {
   while true ; do
       sleep 1
       # Construct a base64 encoded JSON object containing the name, ip, and hostname of each LoadBalancer service present in the istio-system namespace.
-      JSONB64=$(kubectl -n istio-system get svc -o json | jq -e -r '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .spec.clusterIP, "hostname": .status.loadBalancer.ingress[0].hostname} | @base64')
+      JSONB64=$(kubectl -n istio-system get svc -o json | jq -e -r '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname} | @base64')
       # If the var is empty it means something went wrong and we weren't able to parse json with the format that we expect
       [[ -z "${JSONB64}" ]] && die "Something went wrong, no LoadBalancer info was returned"
       # We're not done until all objects have either an IP or a hostname
@@ -46,7 +46,7 @@ getLoadBalancerInfo() {
   done
 
   # echo as a json array
-  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .spec.clusterIP, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.')
+  JSON=$(kubectl -n istio-system get svc -o json | jq -e '.items[] | select(.spec.type=="LoadBalancer") | {"name": .metadata.name, "ip": .status.loadBalancer.ingress[0].ip, "hostname": .status.loadBalancer.ingress[0].hostname}' | jq -e -s '.')
   echo "${JSON}"
 }
 
