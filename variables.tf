@@ -11,7 +11,7 @@ variable "big_bang_manifest_file" {
 }
 
 variable "custom_flux_file" {
-  description = "Path to the flux file."
+  description = "Path to the optional custom flux k8s yaml manifest"
   type        = string
   default     = ""
 }

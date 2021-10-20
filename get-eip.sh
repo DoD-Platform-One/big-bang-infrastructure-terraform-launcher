@@ -57,6 +57,7 @@ getLoadBalancerInfo() {
 waitForIstioNamespace
 waitUntilAtLeastOneLoadBalancerPresent
 # Allow time for additional load balancers to come up
+#TODO: re-evaluate and remove if possible
 sleep 10s
 LOAD_BALANCER_JSON="$(getLoadBalancerInfo)"
 # If the json is empty, it means something went wrong, so we should exit with a nonzero exit code
