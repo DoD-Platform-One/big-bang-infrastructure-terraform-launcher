@@ -17,13 +17,13 @@ resource "kubernetes_config_map" "controller-config" {
     kubernetes_namespace.namespace_flux_system
   ]
   metadata {
-    name = "controller-config"
+    name      = "controller-config"
     namespace = "flux-system"
   }
 
   data = {
-    ".bashrc" = "${file("${path.module}/configs/.bashrc")}"
+    ".bashrc"       = "${file("${path.module}/configs/.bashrc")}"
     ".bash_profile" = "${file("${path.module}/configs/.bash_profile")}"
-    "config" = "${file("${path.module}/configs/config")}"
+    "config"        = "${file("${path.module}/configs/config")}"
   }
 }
