@@ -26,12 +26,6 @@ variable "registry_credentials" {
   }))
 }
 
-variable "reduce_flux_resources" {
-  description = "DEPRECATED - Used to tweak resource settings to fit on a smaller machine, but the new Flux deployment already uses the smaller values. `flux.yaml` and `flux_light.yaml` are now identical files."
-  type        = bool
-  default     = false
-}
-
 variable "custom_credentials" {
   description = "Any custom credentials needed for custom BigBang implementation"
   type = list(object({

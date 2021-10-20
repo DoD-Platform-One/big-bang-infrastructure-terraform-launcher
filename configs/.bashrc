@@ -1,3 +1,4 @@
+# required for immutable filesytem requirements within flux kustomize-controller pod to allow for cloning private git repos
 # .bashrc
 
 # Source global definitions
