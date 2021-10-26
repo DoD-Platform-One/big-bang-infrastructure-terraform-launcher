@@ -20,6 +20,8 @@ repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.52.0
     hooks:
+      ## Want this, but too many findings right now, need to remediate then uncomment this check
+      ## TODO: Uncomment this check
       # - id: checkov
       - id: terraform_docs
         args:
