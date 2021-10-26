@@ -18,7 +18,7 @@ An example of a project that uses this Terraform module can be found [here](http
 
 ```bash
 # Copy and edit with your values
-cp terraform.tfvars.example terraform.tfvars 
+cp terraform.tfvars.example terraform.tfvars
 
 terraform init
 terraform plan

@@ -22,8 +22,8 @@ resource "kubernetes_config_map" "controller-config" {
   }
 
   data = {
-    ".bashrc"       = "${file("${path.module}/configs/.bashrc")}"
-    ".bash_profile" = "${file("${path.module}/configs/.bash_profile")}"
-    "config"        = "${file("${path.module}/configs/config")}"
+    ".bashrc"       = file("${path.module}/configs/.bashrc")
+    ".bash_profile" = file("${path.module}/configs/.bash_profile")
+    "config"        = file("${path.module}/configs/config")
   }
 }
