@@ -1,16 +1,13 @@
 # Big Bang Terraform Start
 
-## Prerequisites
+## Getting Started 
+### Prerequisites
 
 - Linux or MacOS (runs a bash script to return information about Istio's LoadBalancers)
 - `terraform`
 - `kubectl`
 - `jq`
 - `base64`
-
-## Getting Started
-
-An example of a project that uses this Terraform module can be found [here](https://repo1.dso.mil/platform-one/quick-start/big-bang).
 
 ## Instructions
 
